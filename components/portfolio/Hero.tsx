@@ -130,12 +130,12 @@ export default function Hero() {
             <span className="text-[var(--accent)]">Vishwakarma</span>
          </motion.h1>
           <motion.p
-  variants={itemVariants}
-  className="mt-6 text-lg md:text-xl text-[var(--text-body)] max-w-lg leading-relaxed"
->
-  Designing <span className="text-[var(--text-primary)] font-semibold">chaos</span> into{" "}
-  <span className="text-[var(--text-primary)] font-semibold">pixel-perfect</span> clarity.
-</motion.p>
+            variants={itemVariants}
+            className="mt-6 text-lg md:text-xl text-[var(--text-body)] max-w-lg leading-relaxed"
+          >
+            Designing <span className="text-[var(--text-primary)] font-semibold">chaos</span> into{" "}
+            <span className="text-[var(--text-primary)] font-semibold">pixel-perfect</span> clarity.
+          </motion.p>
           <motion.div
             variants={itemVariants}
             className="mt-4 flex flex-wrap gap-3 justify-center md:justify-start"
