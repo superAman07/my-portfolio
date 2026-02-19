@@ -200,7 +200,7 @@ export default function Navbar() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full text-text-muted hover:text-accent hover:bg-bg-elevated transition-all relative overflow-hidden group"
+              className="p-2 rounded-full cursor-pointer text-text-muted hover:text-accent hover:bg-bg-elevated transition-all relative overflow-hidden group"
               aria-label="Toggle theme"
             >
               <AnimatePresence mode="wait">
