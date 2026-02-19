@@ -6,7 +6,6 @@ import HireMeBadge from "@/components/portfolio/HireMeBadge";
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 
-// Stagger container
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -27,7 +26,6 @@ const itemVariants = {
   },
 };
 
-// Anime-style decorative floating particles
 function FloatingParticles() {
   const particles = Array.from({ length: 6 }, (_, i) => ({
     id: i,
@@ -67,7 +65,6 @@ function FloatingParticles() {
   );
 }
 
-// Anime-style speed lines (decorative)
 function SpeedLines() {
   return (
     <div className="absolute top-0 right-0 w-1/3 h-full overflow-hidden pointer-events-none opacity-[0.03]">
@@ -99,11 +96,8 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Decorative Elements */}
       <FloatingParticles />
       <SpeedLines />
-
-      {/* Subtle grid background */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
@@ -112,27 +106,21 @@ export default function Hero() {
           backgroundSize: "60px 60px",
         }}
       />
-
-      {/* Accent glow blob */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--accent)] rounded-full blur-[180px] opacity-[0.04] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8 items-center pt-20 md:pt-16 pb-20 md:pb-0">
-        {/* ── LEFT: Text Content ── */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="order-2 md:order-1 text-center md:text-left"
         >
-          {/* Greeting with anime bracket accent */}
           <motion.p
             variants={itemVariants}
             className="text-sm font-mono text-[var(--accent)] mb-4 tracking-wider"
           >
             【 Hey there, I&apos;m 】
           </motion.p>
-
-          {/* Name */}
          <motion.h1
             variants={itemVariants}
             className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-[var(--text-primary)] leading-tight"
@@ -141,24 +129,13 @@ export default function Hero() {
             <br />
             <span className="text-[var(--accent)]">Vishwakarma</span>
          </motion.h1>
-
-          {/* Tagline */}
           <motion.p
-            variants={itemVariants}
-            className="mt-6 text-lg md:text-xl text-[var(--text-body)] max-w-lg leading-relaxed"
-          >
-            Turning Vision Into Reality With{" "}
-            <span className="text-[var(--text-primary)] font-semibold">
-              Code
-            </span>{" "}
-            And{" "}
-            <span className="text-[var(--text-primary)] font-semibold">
-              Design
-            </span>
-            .
-          </motion.p>
-
-          {/* Role tags */}
+  variants={itemVariants}
+  className="mt-6 text-lg md:text-xl text-[var(--text-body)] max-w-lg leading-relaxed"
+>
+  Designing <span className="text-[var(--text-primary)] font-semibold">chaos</span> into{" "}
+  <span className="text-[var(--text-primary)] font-semibold">pixel-perfect</span> clarity.
+</motion.p>
           <motion.div
             variants={itemVariants}
             className="mt-4 flex flex-wrap gap-3 justify-center md:justify-start"
@@ -174,8 +151,6 @@ export default function Hero() {
               )
             )}
           </motion.div>
-
-          {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
             className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start"
@@ -190,7 +165,6 @@ export default function Hero() {
             </Button>
           </motion.div>
 
-          {/* Hire Me Badge - Desktop only, bottom-left */}
           <motion.div
             variants={itemVariants}
             className="hidden md:block mt-12"
@@ -199,66 +173,48 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* ── RIGHT: Portrait ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9, x: 50 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="order-1 md:order-2 flex justify-center md:justify-end relative"
         >
-          {/* Decorative frame behind portrait */}
           <div className="absolute -inset-4 border-2 border-[var(--accent)] opacity-10 rounded-sm rotate-3 pointer-events-none" />
-
           <div className="relative w-72 h-80 md:w-[420px] md:h-[500px] lg:w-[480px] lg:h-[560px]">
-            {/* Portrait placeholder - replace with your AI-generated portrait */}
-            <div className="w-full h-full bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg-surface)] rounded-sm border border-[var(--border)] flex items-center justify-center overflow-hidden">
-              {/* Uncomment when you have the portrait image: */}
-              {/* <Image
-                src="/images/hero-portrait.png"
-                alt="Ayush Verma - Full-Stack Developer"
+            <div className="w-full h-full rounded-sm overflow-hidden">
+              <Image
+                src="/hero-img.png"
+                alt="Aman Vishwakarma - Full-Stack Developer"
                 fill
-                className="object-cover"
+                className="object-cover -scale-x-100"
                 priority
-              /> */}
-
-              {/* Placeholder visual */}
-              <div className="text-center">
-                <div className="w-24 h-24 mx-auto rounded-full border-2 border-[var(--accent)] opacity-20 mb-4" />
-                <p className="text-[var(--text-muted)] text-sm font-mono">
-                  hero-portrait.png
-                </p>
-              </div>
+              />
             </div>
-
-            {/* Anime-style corner marks */}
             <div className="absolute -top-2 -left-2 w-6 h-6 border-l-2 border-t-2 border-[var(--accent)] opacity-50" />
             <div className="absolute -top-2 -right-2 w-6 h-6 border-r-2 border-t-2 border-[var(--accent)] opacity-50" />
             <div className="absolute -bottom-2 -left-2 w-6 h-6 border-l-2 border-b-2 border-[var(--accent)] opacity-50" />
             <div className="absolute -bottom-2 -right-2 w-6 h-6 border-r-2 border-b-2 border-[var(--accent)] opacity-50" />
           </div>
-
-          {/* Mobile Hire Me Badge */}
           <div className="absolute -bottom-8 -left-4 md:hidden">
             <HireMeBadge />
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-       <motion.div
-         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
-         initial={{ opacity: 0 }}
-         animate={{ opacity: 1, y: [0, 6, 0] }}
-         transition={{ 
-           opacity: { delay: 1.5, duration: 0.5 },
-           y: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
-         }}
-       >
-         <span className="text-[10px] font-mono text-[var(--text-muted)] tracking-widest uppercase">
-           scroll
-         </span>
-         <ArrowDown size={14} className="text-[var(--accent)]" />
-       </motion.div>
+      <motion.a
+        href="#projects"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer group"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 6, 0] }}
+        transition={{ 
+          opacity: { delay: 1.5, duration: 0.5 },
+          y: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+        }}
+      >
+        <span className="text-[10px] font-mono text-[var(--text-muted)] group-hover:text-[var(--accent)] tracking-widest uppercase transition-colors">
+          scroll
+        </span>
+        <ArrowDown size={14} className="text-[var(--accent)] group-hover:scale-125 transition-transform" />
+      </motion.a>
     </section>
   );
 }
