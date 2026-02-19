@@ -116,7 +116,7 @@ export default function Hero() {
       {/* Accent glow blob */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--accent)] rounded-full blur-[180px] opacity-[0.04] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-center pt-24 md:pt-16">
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8 items-center pt-20 md:pt-16 pb-20 md:pb-0">
         {/* ── LEFT: Text Content ── */}
         <motion.div
           variants={containerVariants}
@@ -245,16 +245,20 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <span className="text-xs font-mono text-[var(--text-muted)]">
-          scroll
-        </span>
-        <ArrowDown size={16} className="text-[var(--accent)]" />
-      </motion.div>
+       <motion.div
+         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1, y: [0, 6, 0] }}
+         transition={{ 
+           opacity: { delay: 1.5, duration: 0.5 },
+           y: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+         }}
+       >
+         <span className="text-[10px] font-mono text-[var(--text-muted)] tracking-widest uppercase">
+           scroll
+         </span>
+         <ArrowDown size={14} className="text-[var(--accent)]" />
+       </motion.div>
     </section>
   );
 }
