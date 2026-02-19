@@ -101,7 +101,7 @@ export default function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-300 ease-in-out",
           scrolled
-            ? "bg-[var(--bg-deep)]/80 backdrop-blur-md border-b border-[var(--border)]"
+            ? "bg-bg-deep/80 backdrop-blur-md border-b border-border"
             : "bg-transparent border-b border-transparent"
         )}
       >
@@ -120,16 +120,16 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setActiveLink(link.label)}
                 variants={linkVariants}
-                className="relative text-sm font-medium font-body text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors duration-300 group"
+                className="relative text-sm font-medium font-body text-text-muted hover:text-accent transition-colors duration-300 group"
               >
                 {link.label}
                 {/* Hover Underline */}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
                 {/* Active Indicator */}
                 {activeLink === link.label && (
                   <motion.div
                     layoutId="activeDot"
-                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[var(--accent)]"
+                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent"
                   />
                 )}
               </motion.a>
@@ -140,7 +140,7 @@ export default function Navbar() {
           <div className="flex md:hidden items-center">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
+              className="p-2 text-text-primary hover:text-accent transition-colors"
               aria-label="Toggle menu"
             >
               <motion.div
@@ -162,12 +162,12 @@ export default function Navbar() {
                 borderColor: "var(--accent)", 
                 color: "var(--accent)",
               }}
-              className="w-10 h-10 rounded-full border-2 border-[var(--text-primary)] flex items-center justify-center group relative overflow-hidden"
+              className="w-10 h-10 rounded-full border-2 border-text-primary flex items-center justify-center group relative overflow-hidden"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 border-2 border-transparent border-t-[var(--accent)] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute inset-0 border-2 border-transparent border-t-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
               />
               <span className="text-xs font-bold tracking-tighter">AV</span>
             </motion.a>
@@ -189,7 +189,7 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   variants={socialVariants}
                   whileHover={{ y: -2, color: "var(--accent)" }}
-                  className="text-[var(--text-muted)] transition-colors"
+                  className="text-text-muted transition-colors"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -200,7 +200,7 @@ export default function Navbar() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-all relative overflow-hidden group"
+              className="p-2 rounded-full text-text-muted hover:text-accent hover:bg-bg-elevated transition-all relative overflow-hidden group"
               aria-label="Toggle theme"
             >
               <AnimatePresence mode="wait">
@@ -227,7 +227,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-40 bg-[var(--bg-deep)]/98 backdrop-blur-xl flex flex-col items-center justify-center md:hidden"
+            className="fixed inset-0 z-40 bg-bg-deep/98 backdrop-blur-xl flex flex-col items-center justify-center md:hidden"
           >
             <div className="flex flex-col items-center gap-10">
               {navLinks.map((link) => (
@@ -241,7 +241,7 @@ export default function Navbar() {
                   }}
                   className={cn(
                     "text-3xl font-bold font-body transition-colors",
-                    activeLink === link.label ? "text-[var(--accent)]" : "text-[var(--text-primary)] hover:text-[var(--accent)]"
+                    activeLink === link.label ? "text-accent" : "text-text-primary hover:text-accent"
                   )}
                 >
                   {link.label}
@@ -258,7 +258,7 @@ export default function Navbar() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors"
+                    className="text-text-muted hover:text-accent transition-colors"
                     aria-label={social.label}
                   >
                     <social.icon size={28} />
