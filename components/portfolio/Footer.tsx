@@ -1,3 +1,6 @@
+"use client";
+
+import { scrollToSection } from "@/lib/scrollTo";
 import { Github, Linkedin, Twitter, Instagram } from "lucide-react";
 
 const navLinks = [
@@ -30,13 +33,13 @@ export default function Footer() {
 
           <div className="flex justify-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.label}
-                href={link.href}
-                className="text-text-muted text-xs font-mono uppercase tracking-wider hover:text-accent transition-colors"
+                onClick={() => scrollToSection(link.href.replace("#", ""))}
+                className="text-text-muted text-xs font-mono uppercase tracking-wider hover:text-accent transition-colors cursor-pointer"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </div>
 

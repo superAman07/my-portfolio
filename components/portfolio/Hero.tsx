@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import HireMeBadge from "@/components/portfolio/HireMeBadge";
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
+import { scrollToSection } from "@/lib/scrollTo";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -155,8 +156,8 @@ export default function Hero() {
             variants={itemVariants}
             className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start"
           >
-            <Button variant="brutalist" size="lg">
-              <a href="#projects">View My Work</a>
+            <Button variant="brutalist" size="lg" onClick={() => scrollToSection("projects")}>
+              View My Work
             </Button>
             <Button variant="brutalist-outline" size="lg">
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
@@ -200,8 +201,8 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
-      <motion.a
-        href="#projects"
+      <motion.button
+        onClick={() => scrollToSection("projects")}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer group"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 6, 0] }}
@@ -214,7 +215,7 @@ export default function Hero() {
           scroll
         </span>
         <ArrowDown size={14} className="text-accent group-hover:scale-125 transition-transform" />
-      </motion.a>
+      </motion.button>
     </section>
   );
 }

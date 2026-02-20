@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { scrollToSection } from "@/lib/scrollTo";
 
 export default function HireMeBadge() {
   const text = "  Web Developer · UI/UX Designer · ";
@@ -22,7 +23,7 @@ export default function HireMeBadge() {
         </text>
       </motion.svg>
 
-      <a href="#contact" className="absolute inset-0 flex items-center justify-center">
+      <button onClick={() => scrollToSection("contact")} className="absolute inset-0 flex items-center justify-center">
         <motion.div
           whileHover={{ scale: 1.1 }}
           className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-text-primary flex items-center justify-center cursor-pointer"
@@ -31,7 +32,7 @@ export default function HireMeBadge() {
             Hire Me
           </span>
         </motion.div>
-      </a>
+      </button>
     </div>
   );
 }

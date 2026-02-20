@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X, Sun, Moon, Github, Linkedin, Twitter } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
+import { scrollToSection } from "@/lib/scrollTo";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -114,12 +115,14 @@ export default function Navbar() {
             animate="visible"
           >
             {navLinks.map((link) => (
-              <motion.a
+              <motion.button
                 key={link.label}
-                href={link.href}
-                onClick={() => setActiveLink(link.label)}
+                onClick={() => {
+                  setActiveLink(link.label);
+                  scrollToSection(link.href.replace("#", ""));
+                }}
                 variants={linkVariants}
-                className="relative text-sm font-medium font-body text-text-muted hover:text-accent transition-colors duration-300 group"
+                className="relative text-sm font-medium font-body text-text-muted hover:text-accent transition-colors duration-300 group cursor-pointer"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
@@ -129,7 +132,7 @@ export default function Navbar() {
                     className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent"
                   />
                 )}
-              </motion.a>
+              </motion.button>
             ))}
           </motion.div>
 
@@ -149,8 +152,8 @@ export default function Navbar() {
           </div>
 
           <div className="flex justify-center items-center">
-            <motion.a
-              href="#home"
+            <motion.button
+              onClick={() => scrollToSection("home")}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               whileHover={{ 
@@ -165,7 +168,7 @@ export default function Navbar() {
                 className="absolute inset-0 border-2 border-transparent border-t-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
               />
               <span className="text-xs font-bold tracking-tighter">AV</span>
-            </motion.a>
+            </motion.button>
           </div>
 
           <div className="flex items-center justify-end gap-5">
@@ -223,13 +226,13 @@ export default function Navbar() {
           >
             <div className="flex flex-col items-center gap-10">
               {navLinks.map((link) => (
-                <motion.a
+                <motion.button
                   key={link.label}
-                  href={link.href}
                   variants={mobileLinkVariants}
                   onClick={() => {
                     setActiveLink(link.label);
                     setMobileOpen(false);
+                    scrollToSection(link.href.replace("#", ""));
                   }}
                   className={cn(
                     "text-3xl font-bold font-body transition-colors",
@@ -237,7 +240,7 @@ export default function Navbar() {
                   )}
                 >
                   {link.label}
-                </motion.a>
+                </motion.button>
               ))}
 
               <motion.div 
