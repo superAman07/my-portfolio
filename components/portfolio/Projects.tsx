@@ -70,6 +70,14 @@ export default function Projects() {
           <h2 className="text-4xl md:text-5xl font-display font-bold text-text-primary mt-3">
             Featured <span className="text-accent">Projects</span>.
           </h2>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 180, damping: 18, delay: 0.4 }}
+            className="mt-4 h-[3px] w-[120px] rounded-full origin-left bg-accent"
+            style={{ boxShadow: "0 0 12px rgba(229, 57, 53, 0.5)" }}
+          />
         </motion.div>
 
         {/* Project Cards */}
