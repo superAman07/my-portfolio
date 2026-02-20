@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { div } from "framer-motion/client";
 import { useState, useMemo, useEffect } from "react";
 
 const galaxies = [

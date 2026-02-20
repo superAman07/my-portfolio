@@ -7,7 +7,6 @@ export default function HireMeBadge() {
 
   return (
     <div className="relative w-28 h-28 md:w-36 md:h-36">
-      {/* Rotating Text Circle */}
       <motion.svg
         viewBox="0 0 200 200"
         className="w-full h-full animate-spin-slow"
@@ -23,7 +22,6 @@ export default function HireMeBadge() {
         </text>
       </motion.svg>
 
-      {/* Center "Hire Me" */}
       <a href="#contact" className="absolute inset-0 flex items-center justify-center">
         <motion.div
           whileHover={{ scale: 1.1 }}

@@ -27,7 +27,6 @@ export default function ProjectCard({ title, description, tags, links, image, in
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className={`group relative grid grid-cols-1 md:grid-cols-12 gap-6 items-center mb-24 last:mb-0`}
     >
-      {/* Screenshot */}
       <div className={`md:col-span-7 relative ${isEven ? "md:order-1" : "md:order-2"}`}>
         <div className="relative rounded-lg overflow-hidden border border-border bg-bg-surface aspect-16/10 group-hover:border-accent/50 transition-colors duration-500">
           <div className="absolute inset-0 bg-bg-deep/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
@@ -41,7 +40,6 @@ export default function ProjectCard({ title, description, tags, links, image, in
         <div className={`absolute -bottom-3 ${isEven ? "-right-3" : "-left-3"} w-24 h-24 border-b-2 ${isEven ? "border-r-2" : "border-l-2"} border-accent/30 rounded-br-lg z-0 transition-all duration-300 group-hover:w-32 group-hover:h-32 group-hover:border-accent`} />
       </div>
 
-      {/* Content */}
       <div className={`md:col-span-5 relative z-20 ${isEven ? "md:order-2 md:text-right" : "md:order-1 md:text-left"}`}>
         <h3 className="text-2xl md:text-3xl font-display font-bold text-text-primary mb-4 group-hover:text-accent transition-colors">
           {title}
@@ -53,7 +51,6 @@ export default function ProjectCard({ title, description, tags, links, image, in
           </p>
         </div>
 
-        {/* Tech Tags */}
         <div className={`flex flex-wrap gap-2 mb-8 ${isEven ? "justify-end" : "justify-start"}`}>
           {tags.map((tag) => (
             <span
@@ -65,7 +62,6 @@ export default function ProjectCard({ title, description, tags, links, image, in
           ))}
         </div>
 
-        {/* Links */}
         <div className={`flex gap-4 ${isEven ? "justify-end" : "justify-start"}`}>
           <a
             href={links.repo}

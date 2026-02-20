@@ -107,7 +107,6 @@ export default function Navbar() {
       >
         <nav className="max-w-7xl mx-auto px-6 h-full grid grid-cols-3 items-center relative">
           
-          {/* ── LEFT: Navigation Links (Desktop) ── */}
           <motion.div 
             className="hidden md:flex items-center gap-8"
             variants={containerVariants}
@@ -123,9 +122,7 @@ export default function Navbar() {
                 className="relative text-sm font-medium font-body text-text-muted hover:text-accent transition-colors duration-300 group"
               >
                 {link.label}
-                {/* Hover Underline */}
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
-                {/* Active Indicator */}
                 {activeLink === link.label && (
                   <motion.div
                     layoutId="activeDot"
@@ -136,7 +133,6 @@ export default function Navbar() {
             ))}
           </motion.div>
 
-          {/* Mobile Hamburger (Visible only on Mobile) */}
           <div className="flex md:hidden items-center">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -152,7 +148,6 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* ── CENTER: Logo ── */}
           <div className="flex justify-center items-center">
             <motion.a
               href="#home"
@@ -173,7 +168,6 @@ export default function Navbar() {
             </motion.a>
           </div>
 
-          {/* ── RIGHT: Socials + Toggle (Desktop) ── */}
           <div className="flex items-center justify-end gap-5">
             <motion.div 
               className="hidden md:flex items-center gap-5"
@@ -197,7 +191,6 @@ export default function Navbar() {
               ))}
             </motion.div>
 
-            {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full cursor-pointer text-text-muted hover:text-accent hover:bg-bg-elevated transition-all relative overflow-hidden group"
@@ -219,7 +212,6 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* ── Mobile Menu Overlay ── */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div

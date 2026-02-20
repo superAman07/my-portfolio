@@ -17,34 +17,36 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-// TODO: Add Bierika @font-face once you have the font files
-// For now, headings will fallback to "Arial Black"
-
 export const metadata: Metadata = {
-  title: "Your Name — Full-Stack Developer & Creative Designer",
+  title: "Aman Vishwakarma — Full-Stack Developer & Creative Designer",
   description:
-    "Creative portfolio showcasing full-stack web development projects, skills, and expertise in React, Next.js, and modern web technologies.",
+    "Portfolio of Aman Vishwakarma — a Full-Stack Developer and UI/UX Designer from Lucknow, India. Specializing in React, Next.js, TypeScript, and modern web technologies.",
   keywords: [
+    "Aman Vishwakarma",
     "Full-Stack Developer",
     "Web Developer",
+    "UI/UX Designer",
     "Portfolio",
     "React",
     "Next.js",
     "TypeScript",
+    "Node.js",
   ],
-  authors: [{ name: "Your Name" }],
+  authors: [{ name: "Aman Vishwakarma" }],
   openGraph: {
-    title: "Your Name — Full-Stack Developer & Creative Designer",
+    title: "Aman Vishwakarma — Full-Stack Developer & Creative Designer",
     description:
-      "Creative portfolio showcasing full-stack web development projects and skills.",
+      "Portfolio of Aman Vishwakarma — a Full-Stack Developer and UI/UX Designer specializing in React, Next.js, and modern web technologies.",
     type: "website",
     locale: "en_US",
+    siteName: "Aman Vishwakarma Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Name — Full-Stack Developer & Creative Designer",
+    title: "Aman Vishwakarma — Full-Stack Developer & Creative Designer",
     description:
-      "Creative portfolio showcasing full-stack web development projects and skills.",
+      "Portfolio of Aman Vishwakarma — a Full-Stack Developer and UI/UX Designer specializing in React, Next.js, and modern web technologies.",
+    creator: "@superAman_7",
   },
   robots: {
     index: true,

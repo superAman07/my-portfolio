@@ -19,7 +19,6 @@ export default function Footer() {
     <footer className="relative bg-bg-surface border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          {/* Brand */}
           <div>
             <span className="text-xl font-display font-bold text-text-primary">
               AV<span className="text-accent">.</span>
@@ -29,7 +28,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Nav Links */}
           <div className="flex justify-center gap-6">
             {navLinks.map((link) => (
               <a
@@ -42,7 +40,6 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Socials */}
           <div className="flex justify-end gap-3">
             {socials.map((s, i) => (
               <a
@@ -59,7 +56,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-text-muted text-xs font-mono">
             © {new Date().getFullYear()} Aman Vishwakarma. All rights reserved.
