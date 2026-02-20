@@ -9,15 +9,15 @@ import { useTheme } from "@/hooks/useTheme";
 
 const navLinks = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com/", label: "Twitter" },
+  { icon: Github, href: "https://github.com/superAman07/", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/aman-vishwakarma-dev/", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/superAman_7", label: "Twitter" },
 ];
 
 const containerVariants = {

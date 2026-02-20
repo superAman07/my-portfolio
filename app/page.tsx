@@ -2,6 +2,8 @@ import Hero from "@/components/portfolio/Hero";
 import Navbar from "@/components/portfolio/Navbar";
 import Projects from "@/components/portfolio/Projects";
 import Skills from "@/components/portfolio/Skills";
+import Contact from "@/components/portfolio/Contact";
+import Footer from "@/components/portfolio/Footer";
 
 export default function Home() {
   return (
@@ -10,10 +12,8 @@ export default function Home() {
       <Hero />
       <Projects />
       <Skills />
-      
-      <section id="contact" className="min-h-screen flex items-center justify-center bg-bg-surface">
-        <h2 className="text-3xl font-display text-text-primary">Contact Section</h2>
-      </section>
+      <Contact />
+      <Footer />
     </>
   );
 }

@@ -24,7 +24,7 @@ export default function HireMeBadge() {
       </motion.svg>
 
       {/* Center "Hire Me" */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <a href="#contact" className="absolute inset-0 flex items-center justify-center">
         <motion.div
           whileHover={{ scale: 1.1 }}
           className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-text-primary flex items-center justify-center cursor-pointer"
@@ -33,7 +33,7 @@ export default function HireMeBadge() {
             Hire Me
           </span>
         </motion.div>
-      </div>
+      </a>
     </div>
   );
 }

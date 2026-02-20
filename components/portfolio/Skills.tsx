@@ -1,9 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
-// ── Galaxy Data ──
 const galaxies = [
   {
     id: "frontend",
@@ -64,13 +63,11 @@ const achievements = [
   },
 ];
 
-// ── Helpers ──
 const getOrbitPos = (angleDeg: number, radius: number) => ({
   x: Math.cos((angleDeg * Math.PI) / 180) * radius,
   y: Math.sin((angleDeg * Math.PI) / 180) * radius,
 });
 
-// ── Starfield ──
 function Starfield() {
   const stars = useMemo(
     () =>
@@ -100,7 +97,6 @@ function Starfield() {
         />
       ))}
 
-      {/* Nebula glows */}
       <div
         className="absolute w-[500px] h-[500px] rounded-full opacity-[0.04]"
         style={{
@@ -119,7 +115,6 @@ function Starfield() {
         }}
       />
 
-      {/* Ambient floating particles */}
       {[0, 1, 2].map((i) => (
         <div
           key={`particle-${i}`}
@@ -138,7 +133,6 @@ function Starfield() {
   );
 }
 
-// ── Galaxy Visualization ──
 function GalaxyView({
   selected,
   onSelect,
@@ -152,7 +146,6 @@ function GalaxyView({
   return (
     <div className="relative w-full aspect-square max-w-[420px] mx-auto">
       <svg viewBox="-220 -220 440 440" className="w-full h-full">
-        {/* Orbital Rings */}
         <circle
           cx={0}
           cy={0}
@@ -174,7 +167,6 @@ function GalaxyView({
           opacity={0.4}
         />
 
-        {/* Connection Lines */}
         {galaxies.map((galaxy) => {
           const pos = getOrbitPos(galaxy.angle, ORBIT_R);
           const isSelected = galaxy.id === selected;
@@ -194,7 +186,6 @@ function GalaxyView({
           );
         })}
 
-        {/* Center Core */}
         <circle cx={0} cy={0} r={28} fill="var(--bg-elevated)" stroke="var(--border)" strokeWidth={1.5} />
         <circle cx={0} cy={0} r={22} fill="var(--bg-surface)" />
         <text
@@ -210,21 +201,18 @@ function GalaxyView({
           AV
         </text>
 
-        {/* Galaxy Nodes */}
         {galaxies.map((galaxy) => {
           const pos = getOrbitPos(galaxy.angle, ORBIT_R);
           const isSelected = galaxy.id === selected;
 
           return (
             <g key={galaxy.id}>
-              {/* Breathing Glow */}
               {isSelected && (
                 <circle cx={pos.x} cy={pos.y} r={32} fill={galaxy.color}>
                   <animate attributeName="opacity" values="0.08;0.22;0.08" dur="2s" repeatCount="indefinite" />
                 </circle>
               )}
 
-              {/* Node */}
               <circle
                 cx={pos.x}
                 cy={pos.y}
@@ -248,7 +236,6 @@ function GalaxyView({
                 {galaxy.icon}
               </text>
 
-              {/* Label */}
               <text
                 x={pos.x}
                 y={pos.y + (galaxy.angle === -90 ? -30 : galaxy.angle === 90 ? 35 : 0)}
@@ -264,7 +251,6 @@ function GalaxyView({
                 {galaxy.label}
               </text>
 
-              {/* Skill orbit ring */}
               {isSelected && (
                 <circle
                   cx={pos.x}
@@ -278,7 +264,6 @@ function GalaxyView({
                 />
               )}
 
-              {/* Skill dots */}
               {isSelected &&
                 galaxy.skills.map((skill, i) => {
                   const skillAngle = (i / galaxy.skills.length) * 360 - 90;
@@ -308,7 +293,6 @@ function GalaxyView({
   );
 }
 
-// ── Info Panel ──
 function InfoPanel({ galaxy }: { galaxy: (typeof galaxies)[0] }) {
   return (
     <motion.div
@@ -319,7 +303,6 @@ function InfoPanel({ galaxy }: { galaxy: (typeof galaxies)[0] }) {
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
       className="bg-bg-surface/80 backdrop-blur-md border border-border rounded-2xl p-6 sm:p-8"
     >
-      {/* Header */}
       <div className="flex items-center gap-3 mb-5">
         <span className="text-2xl">{galaxy.icon}</span>
         <h3 className="text-xl sm:text-2xl font-bold font-mono tracking-tight" style={{ color: galaxy.color }}>
@@ -327,10 +310,8 @@ function InfoPanel({ galaxy }: { galaxy: (typeof galaxies)[0] }) {
         </h3>
       </div>
 
-      {/* Description */}
       <p className="text-text-muted text-sm sm:text-base leading-relaxed mb-6">{galaxy.description}</p>
 
-      {/* Skills */}
       <div>
         <span className="text-xs font-mono text-text-muted uppercase tracking-widest mb-3 block">Technologies</span>
 
@@ -358,16 +339,28 @@ function InfoPanel({ galaxy }: { galaxy: (typeof galaxies)[0] }) {
   );
 }
 
-// ── Main Component ──
 export default function Skills() {
   const [selected, setSelected] = useState("frontend");
+  const [isPaused, setIsPaused] = useState(false);
   const selectedGalaxy = galaxies.find((g) => g.id === selected)!;
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setSelected((prev) => {
+        const currentIndex = galaxies.findIndex((g) => g.id === prev);
+        const nextIndex = (currentIndex + 1) % galaxies.length;
+        return galaxies[nextIndex].id;
+      });
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
 
   return (
     <section id="skills" className="relative min-h-screen bg-bg-deep overflow-hidden">
       <Starfield />
 
-      {/* Scan-line overlay */}
       <div
         className="absolute inset-0 pointer-events-none z-20"
         style={{
@@ -377,7 +370,6 @@ export default function Skills() {
       />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -391,7 +383,6 @@ export default function Skills() {
             <span className="text-accent">.</span>
           </h2>
 
-          {/* Anime accent line */}
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -402,9 +393,11 @@ export default function Skills() {
           />
         </motion.div>
 
-        {/* Galaxy + Info Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Galaxy Visualization */}
+        <div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -415,7 +408,6 @@ export default function Skills() {
             <GalaxyView selected={selected} onSelect={setSelected} />
           </motion.div>
 
-          {/* Info Panel + Nav */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -427,7 +419,6 @@ export default function Skills() {
               <InfoPanel galaxy={selectedGalaxy} />
             </AnimatePresence>
 
-            {/* Quick Nav Pills */}
             <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
               {galaxies.map((g) => (
                 <motion.button
@@ -458,7 +449,6 @@ export default function Skills() {
           </motion.div>
         </div>
 
-        {/* Achievements */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -495,7 +485,6 @@ export default function Skills() {
         </motion.div>
       </div>
 
-      {/* Inline styles */}
       <style>{`
         @keyframes twinkle {
           0%, 100% { opacity: 0.05; }
