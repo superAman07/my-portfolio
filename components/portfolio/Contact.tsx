@@ -213,7 +213,7 @@ export default function Contact() {
 
               <Button
                  type="submit"
-                 variant="brutalist-filled"
+                 variant="brutalist"
                  size="lg"
                  disabled={status === "sending"}
                  className="w-full flex items-center justify-center gap-2"
