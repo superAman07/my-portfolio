@@ -37,7 +37,7 @@ const linkVariants = {
   visible: { 
     y: 0, 
     opacity: 1,
-    transition: { type: "spring", stiffness: 300, damping: 24 }
+    transition: { type: "spring" as const, stiffness: 300, damping: 24 }
   },
 };
 
@@ -46,7 +46,7 @@ const socialVariants = {
   visible: { 
     x: 0, 
     opacity: 1,
-    transition: { type: "spring", stiffness: 300, damping: 24 }
+    transition: { type: "spring" as const, stiffness: 300, damping: 24 }
   },
 };
 
@@ -57,7 +57,7 @@ const mobileMenuVariants = {
     scale: 1,
     transition: {
       duration: 0.3,
-      ease: "easeOut",
+      ease: "easeOut" as const,
       staggerChildren: 0.1,
       delayChildren: 0.2
     }
@@ -65,7 +65,7 @@ const mobileMenuVariants = {
   exit: { 
     opacity: 0, 
     scale: 1.05,
-    transition: { duration: 0.2, ease: "easeIn" }
+    transition: { duration: 0.2, ease: "easeIn" as const }
   }
 };
 
