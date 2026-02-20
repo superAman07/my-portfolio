@@ -22,7 +22,7 @@ export default function Contact() {
     setStatus("sending");
 
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", "8955dbec-b5d5-4411-bf71-600ff78a1201");
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY!);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -46,7 +46,6 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-24 md:py-32 bg-bg-deep overflow-hidden">
-      {/* Subtle grid background */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
@@ -55,11 +54,9 @@ export default function Contact() {
           backgroundSize: "60px 60px",
         }}
       />
-      {/* Accent glow */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full blur-[200px] opacity-[0.04] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,9 +80,7 @@ export default function Contact() {
           />
         </motion.div>
 
-        {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left — Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -103,7 +98,6 @@ export default function Contact() {
               </p>
             </div>
 
-            {/* Contact Info */}
             <div className="space-y-4">
               <a
                 href="mailto:amanvishwa2806@gmail.com"
@@ -123,7 +117,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Social Links */}
             <div>
               <span className="text-xs font-mono text-text-muted uppercase tracking-widest mb-4 block">
                 Find me on
@@ -146,7 +139,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Status indicator */}
             <div className="flex items-center gap-2 mt-2">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
@@ -158,7 +150,6 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Right — Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -166,7 +157,6 @@ export default function Contact() {
             transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.35 }}
           >
             <form onSubmit={onSubmit} className="bg-bg-surface/80 backdrop-blur-md border border-border rounded-2xl p-6 sm:p-8 space-y-5">
-              {/* Hidden honeypot for spam */}
               <input type="checkbox" name="botcheck" className="hidden" />
 
               <div>
